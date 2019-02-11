@@ -10,6 +10,18 @@ import Graphics.Gloss.Raster.Field
 import System.Environment
 import System.Exit
 import Data.Char
+import Control.Concurrent
+
+
+allocate :: Int -> Int -> IO ()
+allocate delay n =
+    let xs0 = [0..n]
+    in xs0 `seq` go xs0 0
+  where
+    go xs m =
+        let xs1 = [m..n+m]
+            res = sum $ zipWith (*) xs xs1
+        in print res >> threadDelay delay >> go xs1 (m+1)
 
 -- Main -----------------------------------------------------------------------
 main :: IO ()
@@ -17,6 +29,7 @@ main
  = do   args    <- getArgs
         config  <- parseArgs args defaultConfig
 
+        _ <- forkIO $ allocate 10 1000000
         let display
              = if configFullScreen config
                then FullScreen

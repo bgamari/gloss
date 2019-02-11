@@ -56,11 +56,11 @@ linearSolver origField curField !a !c !iters
         -> Float -> Float -> Int
         -> IO (Field Float) #-}
 
-{-# SPECIALIZE linearSolver
-        :: Field (Float, Float)
-        -> Field (Float, Float)
-        -> Float -> Float -> Int
-        -> IO (Field (Float, Float)) #-}
+-- {-# SPECIALIZE linearSolver
+--         :: Field (Float, Float)
+--         -> Field (Float, Float)
+--         -> Float -> Float -> Int
+--         -> IO (Field (Float, Float)) #-}
 
 
 
@@ -118,11 +118,11 @@ unstableSolver !origField !curField !a
         -> Float
         -> IO (Field Float) #-}
 
-{-# SPECIALIZE unstableSolver
-        :: Field (Float, Float)
-        -> Field (Float, Float)
-        -> Float
-        -> IO (Field (Float, Float)) #-}
+-- {-# SPECIALIZE unstableSolver
+--         :: Field (Float, Float)
+--         -> Field (Float, Float)
+--         -> Float
+--         -> IO (Field (Float, Float)) #-}
 
 
 unstableSolverStencil

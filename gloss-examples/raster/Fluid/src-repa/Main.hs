@@ -19,14 +19,27 @@ import Graphics.Gloss.Interface.IO.Game
 import System.Mem
 import System.Environment       (getArgs)
 import Data.Array.Repa.IO.Timing   as R
+import Control.Concurrent
 import Prelude                     as P
 
+
+allocate :: Int -> Int -> IO ()
+allocate delay n =
+    let xs0 = [0..n]
+    in xs0 `seq` go xs0 0
+  where
+    go xs m =
+        let xs1 = [m..n+m]
+            res = sum $ zipWith (*) xs xs1
+        in print res >> threadDelay delay >> go xs1 (m+1)
 
 main :: IO ()
 main
  = do   -- Parse the command-line arguments.
         args                    <- getArgs
         config                  <- parseArgs args configDefault
+
+        _ <- forkIO $ allocate 10 1000000
 
         -- Setup the initial fluid model.
         let model       = initModel

@@ -9,6 +9,7 @@ import Control.Monad
 import Debug.Trace
 import Config
 import FieldElt
+import Prelude hiding (traverse)
 
 -- | Apply boundary conditions to a velocity field.
 setBoundary :: Config -> VelocityField -> IO VelocityField

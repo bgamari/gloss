@@ -36,7 +36,7 @@ generateParticles gen widthInt heightInt
         g = \(x,y) -> (x,y,0,0)
 
         -- 200 Random float tuples
-        tups            = take 50 $ zip randoms1 randoms2
+        tups            = take 600 $ zip randoms1 randoms2
         randoms1        = randoms gen1 :: [Float]
         randoms2        = randoms gen2 :: [Float]
         (gen1,gen2)     = split gen

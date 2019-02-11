@@ -45,7 +45,7 @@ diffusion !solver !delta !rate field
         -> Field Float
         -> IO (Field Float) #-}
 
-{-# SPECIALIZE diffusion
-        :: DiffSolver -> Delta -> Rate
-        -> Field (Float, Float)
-        -> IO (Field (Float, Float)) #-}
+-- {-# SPECIALIZE diffusion
+--         :: DiffSolver -> Delta -> Rate
+--         -> Field (Float, Float)
+--         -> IO (Field (Float, Float)) #-}
